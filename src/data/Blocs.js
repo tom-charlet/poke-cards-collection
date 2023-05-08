@@ -1,7 +1,7 @@
-export default function Extension() {
-
-    return {
-        "Wizards": [
+export const dataBlocs = [
+    {
+        name: "Wizards",
+        extentions: [
             "Set de base",
             "Jungle",
             "Fossile",
@@ -12,8 +12,11 @@ export default function Extension() {
             "Neo Destiny",
             "Expedition",
             "Aquapolis"
-        ],
-        "Ex": [
+        ]
+    },
+    {
+        name: "Ex",
+        extentions: [
             "Rubis & Saphir",
             "Tempête de Sable",
             "Dragon",
@@ -31,4 +34,4 @@ export default function Extension() {
             "Gardiens du Pouvoir"
         ]
     }
-}
+]

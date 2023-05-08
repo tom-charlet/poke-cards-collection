@@ -1,29 +1,43 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import Pokemons from '../data/Pokemons'
-import Types from '../data/Types'
+import { dataPokemons } from '../data/Pokemons'
+import { dataTypes } from '../data/Types'
+import { dataBlocs } from '../data/Blocs'
 
 const Form = dynamic(() => import('../components/Form'), { ssr: false })
 const Search = dynamic(() => import('../components/Search'), { ssr: false })
 const Input = dynamic(() => import('../components/Input'), { ssr: false })
+const Button = dynamic(() => import('../components/Button'), { ssr: false })
 const Number = dynamic(() => import("../components/Input").then((mod) => mod.Number))
 
 const AddForm = () => {
-
-    const [pokemons, setPokemons] = useState()
-    const [types, setTypes] = useState()
+    const [blocs, setBlocs] = useState([])
+    const [bloc, setBloc] = useState()
+    const [extentions, setExtentions] = useState([])
 
     useEffect(() => {
-        setPokemons(Pokemons)
-        setTypes(Types)
+        const newBlocs = [...blocs]
+        const newExtentions = [...extentions]
+
+        dataBlocs.map(item => {
+            newBlocs.push(item.name)
+            item.extentions.map(item => newExtentions.push(item))
+        })
+
+        setBlocs(newBlocs)
+        setExtentions(newExtentions)
     }, [])
 
-    return <Form className='grid grid-cols-6 gap-6 bg-gray-100 p-10'>
-        {pokemons && <Search options={pokemons} name='pokemon' placeholder='Pokémon' className='col-span-4' />}
-        {types && <Search options={types} name='types' placeholder='Types' className='col-span-2' />}
-        <Number name='numero' placeholder='N° carte' />
-        <button type='submit'>Envoyer</button>
+    console.log(bloc)
+
+    return <Form className='grid grid-cols-12 gap-6 bg-red-600 px-10 py-14 max-w-[800px] rounded-lg border-2 border-gray-800'>
+        <Search options={dataPokemons} name='pokemon' placeholder='Pokémon' className='col-span-8' />
+        <Search options={dataTypes} name='type' placeholder='Type' className='col-span-4' />
+        <Search options={blocs} updateBloc={setBloc} name='Bloc' placeholder='Bloc' className='col-span-6' />
+        <Search options={extentions} name='Extension' placeholder='Extension' className='col-span-6' />
+        <Number name='numero' placeholder='N° carte' className='col-span-3' />
+        <Button type='submit' className='col-span-3'>Ajouter</Button>
     </Form>
 }
 

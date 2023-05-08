@@ -5,7 +5,7 @@ import useOutsideClick from "./OutsideClick";
 
 const Icon = dynamic(() => import('./Icon'), { ssr: false })
 
-export default function Search({ options, className, ...props }) {
+export default function Search({ options, className, updateBloc, ...props }) {
     const [results, setResults] = useState();
     const [value, setValue] = useState('');
     const [show, setShow] = useState(false);
@@ -21,18 +21,19 @@ export default function Search({ options, className, ...props }) {
         setResults(fuse.search(value))
         setValue(value)
 
-        if (value === '') {
-            setShow(false)
-        }
-        else {
-            setShow(true)
-        }
+        if (value === '') setShow(false)
+        else setShow(true)
+
+        if (updateBloc) updateBloc(value)
     }
 
     const handleSelect = (e) => {
-        setValue(e.currentTarget.innerText)
+        const value = e.currentTarget.innerText
+        setValue(value)
         setShow(false)
         setResults('')
+
+        if (updateBloc) updateBloc(value)
     }
 
     const handleShow = (e) => {
@@ -41,12 +42,12 @@ export default function Search({ options, className, ...props }) {
     }
 
     return <label ref={ref} className={`flex flex-col gap-2 relative ${className ?? ""}`}>
-        <input {...props} className={`py-3 px-5 border focus:outline-0 ${(value === '' && !show) ? 'border-transparent' : 'border-gray-600'}`}
+        <input {...props} className={`py-3 px-5 rounded border-2 focus:outline-0 placeholder:text-gray-300 ${(value === '' && !show) ? 'border-gray-800' : 'border-gray-800'}`}
             type="text"
             onChange={handleChange}
             value={value}
         />
-        {show && <ul className='z-20 absolute bg-white top-[48px] w-full border border-gray-600 border-t-0'>
+        {show && <ul className='z-20 absolute bg-white top-[48px] w-full rounded-b border-2 border-gray-800 border-t-0 max-h-[500px] overflow-auto'>
             {(results && results.length)
                 ? results.map((item, index) => <ListItem key={index} onClick={handleSelect} >{item.item}</ListItem>)
                 : options.map((item, index) => <ListItem key={index} onClick={handleSelect} >{item}</ListItem>)

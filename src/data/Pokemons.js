@@ -7,6 +7,5 @@ export const dataPokemons = [
     "Dracaufeu",
     "Carapuce",
     "Carabaffe",
-    "Tortank",
-    "Sylvain"
+    "Tortank"
 ]

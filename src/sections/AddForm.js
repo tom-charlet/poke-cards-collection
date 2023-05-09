@@ -17,8 +17,8 @@ const AddForm = () => {
     const [extentions, setExtentions] = useState([])
 
     useEffect(() => {
-        const newBlocs = [...blocs]
-        const newExtentions = [...extentions]
+        const newBlocs = blocs
+        const newExtentions = extentions
 
         dataBlocs.map(item => {
             newBlocs.push(item.name)
@@ -31,7 +31,15 @@ const AddForm = () => {
 
     console.log(bloc)
 
-    return <Form className='grid grid-cols-12 gap-6 bg-red-600 px-10 py-14 max-w-[800px] rounded-lg border-2 border-gray-800'>
+    useEffect(() => {
+        if (blocs && blocs.length) {
+            blocs.map(item => {
+                if (item === bloc) { console.log('match ' + bloc) }
+            })
+        }
+    }, [bloc]);
+
+    return <Form className='grid grid-cols-12 gap-6 bg-red-600 px-10 py-14 max-w-[800px] rounded-lg border-2 border-gray-800 mx-auto'>
         <Search options={dataPokemons} name='pokemon' placeholder='Pokémon' className='col-span-8' />
         <Search options={dataTypes} name='type' placeholder='Type' className='col-span-4' />
         <Search options={blocs} updateBloc={setBloc} name='Bloc' placeholder='Bloc' className='col-span-6' />

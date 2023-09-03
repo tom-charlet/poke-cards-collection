@@ -29,15 +29,11 @@ const AddForm = () => {
         setExtentions(newExtentions)
     }, [])
 
-    console.log(bloc)
-
     useEffect(() => {
-        if (blocs && blocs.length) {
-            blocs.map(item => {
-                if (item === bloc) { console.log('match ' + bloc) }
-            })
-        }
+
     }, [bloc]);
+
+    // console.log(bloc, extentions)
 
     return <Form className='grid grid-cols-12 gap-6 bg-red-600 px-10 py-14 max-w-[800px] rounded-lg border-2 border-gray-800 mx-auto'>
         <Search options={dataPokemons} name='pokemon' placeholder='Pokémon' className='col-span-8' />

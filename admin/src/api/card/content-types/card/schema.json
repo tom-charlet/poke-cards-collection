@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cards",
+  "info": {
+    "singularName": "card",
+    "pluralName": "cards",
+    "displayName": "Cartes",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "mauvais",
+        "correct",
+        "bon",
+        "parfait",
+        "neuf"
+      ]
+    },
+    "reverse": {
+      "type": "boolean"
+    },
+    "number": {
+      "type": "biginteger"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "plante",
+        "feu",
+        "eau",
+        "électrique",
+        "combat",
+        "psy",
+        "incolore",
+        "obscurité",
+        "métal",
+        "dragon"
+      ]
+    },
+    "rarity": {
+      "type": "enumeration",
+      "enum": [
+        "commune",
+        "peu commune",
+        "rare",
+        "holographique",
+        "ultra rare",
+        "secrète"
+      ]
+    }
+  }
+}

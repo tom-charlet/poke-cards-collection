@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cards",
+  "info": {
+    "singularName": "card",
+    "pluralName": "cards",
+    "displayName": "Cartes",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "localId": {
+      "type": "integer"
+    },
+    "serie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::serie.serie",
+      "inversedBy": "cards"
+    },
+    "set": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::set.set",
+      "inversedBy": "cards"
+    },
+    "stage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::stage.stage",
+      "inversedBy": "cards"
+    },
+    "type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::type.type",
+      "inversedBy": "cards"
+    },
+    "categorie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categorie.categorie",
+      "inversedBy": "cards"
+    },
+    "suffix": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::suffix.suffix",
+      "inversedBy": "cards"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.card-item"
+    },
+    "rarity": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::rarity.rarity",
+      "inversedBy": "cards"
+    }
+  }
+}

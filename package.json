@@ -1,5 +1,5 @@
 {
-  "name": "test-next-app",
+  "name": "pokecard-collection-api",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,14 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "autoprefixer": "10.4.14",
-    "eslint": "8.39.0",
-    "eslint-config-next": "13.4.0",
-    "fuse.js": "^6.6.2",
-    "next": "13.4.0",
-    "postcss": "8.4.23",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "tailwindcss": "3.3.2"
+    "@tcgdex/sdk": "^2.5.1",
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
   }
 }

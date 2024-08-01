@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rarities",
+  "info": {
+    "singularName": "rarity",
+    "pluralName": "rarities",
+    "displayName": "Raretés"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "symbol": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card.card",
+      "mappedBy": "rarity"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_card_counts",
+  "info": {
+    "displayName": "CardCount",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "official": {
+      "type": "integer"
+    },
+    "total": {
+      "type": "integer"
+    }
+  }
+}

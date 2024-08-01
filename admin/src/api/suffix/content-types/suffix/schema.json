@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "suffixes",
+  "info": {
+    "singularName": "suffix",
+    "pluralName": "suffixes",
+    "displayName": "Suffixes"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card.card",
+      "mappedBy": "suffix"
+    }
+  }
+}

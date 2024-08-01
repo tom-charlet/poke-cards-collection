@@ -12,65 +12,63 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "name": {
       "type": "string"
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "name",
+      "required": true
     },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+    "localId": {
+      "type": "integer"
     },
-    "state": {
-      "type": "enumeration",
-      "enum": [
-        "mauvais",
-        "correct",
-        "bon",
-        "parfait",
-        "neuf"
-      ]
+    "serie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::serie.serie",
+      "inversedBy": "cards"
     },
-    "reverse": {
-      "type": "boolean"
+    "set": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::set.set",
+      "inversedBy": "cards"
     },
-    "number": {
-      "type": "biginteger"
+    "stage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::stage.stage",
+      "inversedBy": "cards"
     },
     "type": {
-      "type": "enumeration",
-      "enum": [
-        "plante",
-        "feu",
-        "eau",
-        "électrique",
-        "combat",
-        "psy",
-        "incolore",
-        "obscurité",
-        "métal",
-        "dragon"
-      ]
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::type.type",
+      "inversedBy": "cards"
+    },
+    "categorie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categorie.categorie",
+      "inversedBy": "cards"
+    },
+    "suffix": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::suffix.suffix",
+      "inversedBy": "cards"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.card-item"
     },
     "rarity": {
-      "type": "enumeration",
-      "enum": [
-        "commune",
-        "peu commune",
-        "rare",
-        "holographique",
-        "ultra rare",
-        "secrète"
-      ]
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::rarity.rarity",
+      "inversedBy": "cards"
     }
   }
 }

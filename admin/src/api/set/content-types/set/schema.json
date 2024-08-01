@@ -4,7 +4,7 @@
   "info": {
     "singularName": "set",
     "pluralName": "sets",
-    "displayName": "Blocs",
+    "displayName": "Sets",
     "description": ""
   },
   "options": {
@@ -12,14 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "name": {
       "type": "string"
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "name",
+      "required": true
     },
-    "image": {
+    "logo": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -30,13 +31,27 @@
         "audios"
       ]
     },
-    "date": {
-      "type": "date"
+    "symbol": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "series": {
+    "cardCount": {
+      "displayName": "cardCount",
+      "type": "component",
+      "repeatable": false,
+      "component": "content.card-count"
+    },
+    "cards": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::serie.serie",
+      "target": "api::card.card",
       "mappedBy": "set"
     }
   }
